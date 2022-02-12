@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../style/Login.css';
-import { Button, Input, Alert } from 'reactstrap';
+import { Button, Input } from 'reactstrap';
 import { FcTodoList } from 'react-icons/fc';
 
 function Register() {
