@@ -16,3 +16,12 @@
   height: 150px;
   border-radius: 0.25rem;
 }
+
+.login-input {
+  margin-bottom: 5px;
+}
+
+.cadastrese {
+  margin-top:20px;
+  color: white;
+}
