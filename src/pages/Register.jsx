@@ -46,8 +46,8 @@ function Register() {
       emailUser: email,
       senhaUser: senha,
     };
-    if (!registerChecker(newUser)) {
-      alert("Usuario não existe")
+    if (registerChecker(newUser)) {
+      alert("Usuario já existe")
     } else {
       if (arrayUsers) {
         localStorage.setItem('users', JSON.stringify([...arrayUsers, newUser]))
