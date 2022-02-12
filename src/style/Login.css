@@ -1,0 +1,18 @@
+.login-page {
+  margin-top: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.login-form {
+  margin-top: 50px;
+  border-style:none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 20%px;
+  height: 150px;
+  border-radius: 0.25rem;
+}
