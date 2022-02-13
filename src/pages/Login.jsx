@@ -35,6 +35,7 @@ function Login() {
       const existeUsuario = arrayUsers.find((user) => user.emailUser === email && user.senhaUser === senha);
       if (existeUsuario) {
         setEmailLocal(email)
+        localStorage.setItem('emailLocal', JSON.stringify(email))
         history.push('/list');
       } else {
         setAlertAppear(true);

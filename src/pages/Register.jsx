@@ -6,6 +6,9 @@ import { FcTodoList } from 'react-icons/fc';
 
 function Register() {
   const arrayUsers = JSON.parse(localStorage.getItem('users'));
+  if (arrayUsers === null) {
+    localStorage.setItem('users', JSON.stringify([]));
+  }
   const [email, setEmail] = useState('');
   const [senha, setSenha] = useState('');
   const [nome, setNome] = useState('');

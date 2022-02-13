@@ -11,11 +11,16 @@ import {
   DropdownItem,
   DropdownMenu,
   DropdownToggle,
+  Button,
 } from 'reactstrap';
 import ContextList from '../context/ContextList';
+import '../style/List.css';
 
 function Header() {
-  const { emailLocal } = useContext(ContextList)
+  const { emailLocal, setAparecerForm, aparecerForm } = useContext(ContextList)
+  function mudaAparencia() {
+    setAparecerForm(!aparecerForm);
+  }
   return (
     <div>
       <Navbar
@@ -67,6 +72,14 @@ function Header() {
               </DropdownMenu>
             </UncontrolledDropdown>
           </Nav>
+          <Button
+            className="btn-space"
+            onClick={ mudaAparencia }
+            outline
+          >
+            Adicionar Tarefa
+          </Button>
+          <br/>
           <Nav
             navbar
           >
