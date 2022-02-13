@@ -2,7 +2,6 @@ import { Button } from 'reactstrap';
 import '../style/Home.css';
 
 function Home() {
-  localStorage.setItem('users', JSON.stringify([]));
   return (
     <div className="home">
       <h1>
