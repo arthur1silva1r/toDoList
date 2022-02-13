@@ -1,11 +1,14 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import '../style/Login.css';
-import { Button, Input } from 'reactstrap';
+import { Button, Input, Alert } from 'reactstrap';
 import { FcTodoList } from 'react-icons/fc';
+import ContextList from '../context/ContextList';
 
 function Login() {
+  const { setEmailLocal } = useContext(ContextList);
   const [email, setEmail] = useState('');
+  const [alertAppear, setAlertAppear] = useState(false);
   const arrayUsers = JSON.parse(localStorage.getItem('users'));
   const history = useHistory();
 
@@ -26,9 +29,10 @@ function Login() {
     if (arrayUsers) {
       const existeUsuario = arrayUsers.find((user) => user.emailUser === email);
       if (existeUsuario) {
+        setEmailLocal(email)
         history.push('/list');
       } else {
-        alert("Usuário inexistente. Registre-se agora clicando em");
+        setAlertAppear(true);
       }
     }
   }
@@ -67,6 +71,19 @@ function Login() {
           Não possui uma conta? Clique aqui
         </a>
       </form>
+      {
+        !alertAppear ? null : (
+          <>
+            <br />
+            <Alert
+              color="primary"
+            >
+              <p>Usuário não existe</p>
+              <p>Realize o cadastro para ter acesso a lista de tarefas</p>
+            </Alert>
+          </>
+        ) 
+      }
     </div>
   );
 }

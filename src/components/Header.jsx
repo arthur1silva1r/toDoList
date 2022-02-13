@@ -1,3 +1,4 @@
+import { useContext } from 'react';
 import {
   Navbar,
   NavbarBrand,
@@ -11,8 +12,10 @@ import {
   DropdownMenu,
   DropdownToggle,
 } from 'reactstrap';
+import ContextList from '../context/ContextList';
 
 function Header() {
+  const { emailLocal } = useContext(ContextList)
   return (
     <div>
       <Navbar
@@ -20,9 +23,9 @@ function Header() {
         expand="md"
         light
       >
-        <span id="emoji-list">&#128209;</span>
+        
         <NavbarBrand href="/list">
-          To Do List
+          <h5><span id="emoji-list">&#128209;</span>To Do List</h5>
         </NavbarBrand>
         <NavbarToggler onClick={function noRefCheck(){}} />
         <Collapse navbar>
@@ -31,7 +34,7 @@ function Header() {
             navbar
           >
             <NavItem>
-              <NavLink href="/favoritas/">
+              <NavLink href="/favoritas">
                 Favoritas
               </NavLink>
             </NavItem>
@@ -70,7 +73,7 @@ function Header() {
             <NavItem>
               <NavLink href="/profile/">
                 {
-                  JSON.parse(localStorage.getItem('emailTodo'))
+                  emailLocal
                 }
               </NavLink>
             </NavItem>

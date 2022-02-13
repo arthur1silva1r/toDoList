@@ -6,7 +6,6 @@ function List() {
   return (
     <>
       <Header />
-      
     </>
   );
 }

@@ -1,1 +1,10 @@
-//aqui vai ser escrito o formulario para adicionar uma nova task
+
+import React from 'react'
+
+function FormTask() {
+  return (
+    <div>FormTask</div>
+  )
+}
+
+export default FormTask

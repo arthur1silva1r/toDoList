@@ -5,6 +5,7 @@ import Login from './pages/Login';
 import List from './pages/List'
 import Register from "./pages/Register";
 import Home from './pages/Home';
+import Favoritas from './pages/Favoritas';
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Route exact path="/signin" component={ Login }/>
           <Route exact path="/signup" component={ Register }/>
           <Route exact path="/list" component={ List }/>
+          <Route exact path="/favoritas" component={ Favoritas }/>
         </Switch>
       </BrowserRouter>
     </ListProvider>
