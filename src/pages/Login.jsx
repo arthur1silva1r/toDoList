@@ -8,6 +8,7 @@ import ContextList from '../context/ContextList';
 function Login() {
   const { setEmailLocal } = useContext(ContextList);
   const [email, setEmail] = useState('');
+  const [senha, setSenha] = useState('');
   const [alertAppear, setAlertAppear] = useState(false);
   const arrayUsers = JSON.parse(localStorage.getItem('users'));
   const history = useHistory();
@@ -16,9 +17,13 @@ function Login() {
     setEmail(target.value);
   }
 
+  function senhaHandler({ target }) {
+    setSenha(target.value);
+  }
+
   function validateEmail(email) {
     let regexEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/;
-    if (email.match(regexEmail)) {
+    if (email.match(regexEmail) && senha.length > 5) {
       return true; 
     } else {
       return false; 
@@ -27,12 +32,13 @@ function Login() {
 
   function onSubmitClick(){
     if (arrayUsers) {
-      const existeUsuario = arrayUsers.find((user) => user.emailUser === email);
+      const existeUsuario = arrayUsers.find((user) => user.emailUser === email && user.senhaUser === senha);
       if (existeUsuario) {
         setEmailLocal(email)
         history.push('/list');
       } else {
         setAlertAppear(true);
+        setSenha('');
       }
     }
   }
@@ -54,6 +60,8 @@ function Login() {
           name="senha"
           placeholder="Digite sua senha aqui"
           className="login-input"
+          value={ senha }
+          onChange={ (evt) => senhaHandler(evt) }
         />
         {" "}
         <Button
@@ -78,8 +86,7 @@ function Login() {
             <Alert
               color="primary"
             >
-              <p>Usuário não existe</p>
-              <p>Realize o cadastro para ter acesso a lista de tarefas</p>
+              <p>Usuário não existe ou os dados estão incorretos</p>
             </Alert>
           </>
         ) 
